@@ -1,14 +1,19 @@
 const http = require('http');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const name = 'Nathalia Belisario';
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Nathalia Belisario');
+  if (req.url === '/') {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(`<h1>${name}</h1>`);
+    res.end();
+  } else {
+    res.writeHead(404, {'Content-Type': 'text/plain'});
+    res.write('Page not found');
+    res.end();
+  }
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+const port = 3000;
+
+server.listen(port, () => console.log(`Server running on port ${port}`));
