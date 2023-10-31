@@ -1,0 +1,15 @@
+{
+  "name": "cse341",
+  "version": "1.0.0",
+  "description": "This course focuses on the backend development of dynamic, service-oriented web applications. Students learn how to design and implement web services, interact with data storage, and use these tools to build functioning web applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
