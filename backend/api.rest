@@ -1,0 +1,8 @@
+@name=Localhost
+@base=http://localhost:3000
+
+### Get all users
+GET /users
+
+### Get a single user by ID
+GET /users/{user_id}
