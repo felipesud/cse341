@@ -55,7 +55,7 @@ To utilize the `api.rest` file, follow these steps:
 This file simplifies the process of testing your routes and verifying their functionality.
 
 ## Demo
-For a demonstration of the API in action, please watch the video on [YouTube](https://example.com).
+For a demonstration of the API in action, please watch the video on [YouTube](https://youtu.be/o2lT6DDJmfM).
 
 ## Access the API
 You can access the API deployed on Render by visiting [API on Render](https://project1-xuop.onrender.com/users).
