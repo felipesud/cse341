@@ -16,10 +16,12 @@
     "express": "^4.18.2",
     "mongodb": "^6.2.0",
     "mongoose": "^6.0.14",
-    "nodemon": "^2.0.15"
-    
+    "nodemon": "^2.0.15",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.8.9"
+    "@types/node": "^20.8.9",
+    "express-serve-static-core": "^0.1.1",
+    "swagger-autogen": "^2.23.7"
   }
 }
