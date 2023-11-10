@@ -5,6 +5,6 @@ const app = express();
 
 const outputFile = 'swagger-output.json';
 
-const endpointsFiles = ['./routes/temple.js'];
+const endpointsFiles = ['./routes/index.js'];
 
 swagger(outputFile, endpointsFiles);
