@@ -1,0 +1,38 @@
+### Get All Users
+GET http://localhost:3000/users
+
+
+### Get Users by Id
+GET http://localhost:3000/users/6544e13b616b512b0d51c1bd
+
+
+### Create user
+POST http://localhost:3000/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Nathalia",
+    "lastName": "Belisario",
+    "email": "nathaliapb.20@gmail.com",
+    "favoriteColor": "yellow",
+    "birthday": "03/03/1995"
+
+}
+
+
+### Update User
+PUT http://localhost:3000/users/6544e13b616b512b0d51c1bd HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Martin",
+    "lastName": "Harris",
+    "email": "example@gmail.com",
+    "favoriteColor": "gray",
+    "birthday": "03/03/1995"
+
+}
+
+
+### Delete User
+DELETE http://localhost:3000/users/6544e13b616b512b0d51c1bd

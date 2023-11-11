@@ -1,8 +1,11 @@
-const router = require('express').Router();
+// routes/index.js
+const express = require('express');
+const router = express.Router();
 
-// router.get('/', (req, res) => {
-//   res.send('Hello World!');
-// });
+router.get('/', (req, res) => {
+    //#swagger.tags = ['Hello World']
+    res.send('Hello World!');
+});
 
 router.use('/users', require('./users'));
 
