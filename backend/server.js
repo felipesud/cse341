@@ -5,6 +5,11 @@ const swaggerDocument = require('./swagger.json');
 const mongodb = require('./data/database');
 const app = express();
 const bodyParser = require('body-parser');
+app
+  .use(cors())
+  .use(express.json())
+  .use(express.urlencoded({ extended: true }))
+  .use('/', require('./routes'));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
@@ -19,11 +24,6 @@ app.use((req, res, next) => {
 
 app.use('/', require('./routes'));
 
-app
-  .use(cors())
-  .use(express.json())
-  .use(express.urlencoded({ extended: true }))
-  .use('/', require('./routes'));
 
 
 mongodb.initDb((err) => {

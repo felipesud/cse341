@@ -8,8 +8,8 @@
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-
-    "https"
+    "https",
+    "http"
   ],
   "paths": {
     "/": {
@@ -101,6 +101,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
