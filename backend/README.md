@@ -1,62 +1,39 @@
-# Contacts Project: Part 2
+# Week 03 Team Activity: Validation and Error handling
 
 ## Overview
-This project focuses on creating an API for storing and retrieving information about contacts. These contacts are stored in a MongoDB database, and all interaction occurs through the API. This README covers the progress made during Week 01 and Week 02.
+In this team activity for CSE 341: Web Services, the objective was to gain hands-on experience with Mongoose, a popular framework used in conjunction with MongoDB. The team's assignment involved working with a comprehensive RESTful API that integrates MongoDB and Mongoose.
 
-## Technologies Used
-I am utilizing **Node.js**, **MongoDB**, and **Express** for task implementation.
+### Task Description
+- **MongoDB Setup**: A team member was designated to set up the MongoDB connection for the project.
+- **Discussion on Validation and Error Handling**: As a group, discussions were held to identify potential areas for implementing validation checks and error handling mechanisms within the API.
+- **Implementing Validation and Error Handling**: Each route of the API was augmented with appropriate validation checks and error handling procedures.
+- **Testing Routes**: Utilization of a REST client to continuously test and validate the functionality of the routes as the implementation progressed.
+- **Comparison with Sample Solution**: After completing the tasks, the team reviewed and compared their approach to a sample solution provided.
+- **Submission**: Reporting participation in this activity via the I-Learn quiz.
 
-## Installation
-To test the code, you need to install the following dependencies:
+## Steps Taken
+1. **MongoDB Connection Setup**: A team member configured the connection to the MongoDB database.
+2. **Group Discussion on Validation and Error Handling**:
+   - Identified potential validation checkpoints for inputs and outputs.
+   - Outlined strategies for error handling in various scenarios.
+3. **Augmenting Routes**:
+   - Added validation checks to ensure data integrity and correctness.
+   - Implemented error handling procedures for different scenarios that could arise during API usage.
+4. **Continuous Testing**:
+   - Used a REST client to test each route, ensuring they functioned as intended.
+   - Iteratively refined validation and error handling based on testing outcomes.
+5. **Comparing Approaches**:
+   - Reviewed the sample solution provided to analyze similarities and differences in the team's approach.
+6. **Submission**:
+   - Members reported participation in the activity by completing the I-Learn quiz.
 
-1. Node.js
-2. MongoDB
-3. Express
+## Additional Resources
+- [Sample Solution](https://www.youtube.com/watch?v=S0przpEKKGU): Review the provided sample solution for comparison.
+- Video Walkthrough (if available): Access the video walkthrough for further insights.
 
-You can install them using npm (Node Package Manager):
+## Conclusion
+This activity provided practical exposure to integrating Mongoose with MongoDB in a RESTful API context. It enhanced our understanding of validation, error handling, and the iterative process of refining API functionality.
 
-\`\`\`bash
-npm install express mongodb
-\`\`\`
 
-## Progress in Week 01
-In the first week, I successfully completed the following tasks:
+---
 
-1. Project setup and database initialization.
-2. Data import into the database.
-3. Implementation of GET API routes for retrieving individual contacts and all contacts.
-4. Deployment of the application to [Render](https://render.com/).
-
-## Progress in Week 02
-In the second week, I completed the project by adding the following functionality:
-
-1. POST endpoint for creating new contacts.
-2. PUT endpoint for updating existing contacts.
-3. DELETE endpoint for removing contacts.
-4. API Documentation for detailed usage instructions.
-
-## API Routes
-Here's a summary of the API routes that were implemented:
-
-- **Get All Contacts**: Retrieve a list of all contacts.
-- **Get a Single Contact by ID**: Retrieve a specific contact by providing the contact's ID.
-- **Create New Contact**: Add a new contact to the database.
-- **Update Existing Contact**: Modify the details of an existing contact.
-- **Delete Contact**: Remove a contact from the database.
-
-## Using the `api.rest` File
-To utilize the `api.rest` file, follow these steps:
-
-1. Open the `api.rest` file in Visual Studio Code.
-2. Ensure your local server is running.
-3. Click on the "Send Request" button for the desired route to test it against your local server.
-
-This file simplifies the process of testing your routes and verifying their functionality.
-
-## Demo
-For a demonstration of the API in action, please watch the video on [YouTube](https://youtu.be/RVxKx7QOCsg).
-
-## Access the API
-You can access the API deployed on [Render](https://project1-xuop.onrender.com/api-docs/).
-
-Stay tuned for further updates and enhancements to the Contacts Project.
