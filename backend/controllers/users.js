@@ -1,30 +1,35 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res) => {
-    //#swagger.tags = ['Users']
-    try {
-        const result = await mongodb.getDb().collection('users').find().toArray();
-        res.status(200).json(result);
-    } catch (error) {
-        res.status(500).json({ error: 'Error retrieving users' });
-    }
+
+const getAll = (req, res) => {
+  mongodb
+    .getDb()
+    .collection('users')
+    .find()
+    .toArray((err, lists) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists);
+    });
 };
 
-const getSingle = async (req, res) => {
+const getSingle = (req, res) => {
     //#swagger.tags = ['Users']
-    const id = req.params.id;
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        res.status(400).send('Invalid ID format');
-        return;
-    }
-    const userId = new ObjectId(id);
-    try {
-        const result = await mongodb.getDb().collection('users').findOne({ _id: userId });
-        res.status(200).json(result);
-    } catch (error) {
-        res.status(500).json({ error: 'Error retrieving user' });
-    }
+    const userId = new ObjectId(req.params.id);
+    mongodb
+    .getDb()
+    .collection('users')
+    .find({_id: userId})
+    .toArray((err, result) => {
+        if (err){
+            res.status(400).json({message: err});
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(result[0]);
+    });
 };
 
 const createUser = async (req, res) => {
