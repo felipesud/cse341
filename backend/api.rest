@@ -1,5 +1,5 @@
 @name=Localhost
-@base=http://localhost:3000
+@base=http://localhost:8083
 
 ### Get all users
 GET /users
@@ -9,7 +9,7 @@ GET /users/{user_id}
 
 
 ### Create user
-POST http://localhost:3000/users HTTP/1.1
+POST http://localhost:8083/users HTTP/1.1
 Content-Type: application/json
 
 {
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 
 ### Update User
-PUT http://localhost:3000/users/6544e13b616b512b0d51c1bd HTTP/1.1
+PUT http://localhost:8083/users/6544e13b616b512b0d51c1bd HTTP/1.1
 Content-Type: application/json
 
 {
@@ -37,4 +37,4 @@ Content-Type: application/json
 
 
 ### Delete User
-DELETE http://localhost:3000/users/6544e13b616b512b0d51c1bd
+DELETE http://localhost:8083/users/6544e13b616b512b0d51c1bd
