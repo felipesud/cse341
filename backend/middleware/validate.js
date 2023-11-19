@@ -1,24 +1,24 @@
-const validator = require('../helpers/validate');
+const Joi = require('joi');
 
 const saveQuiz = (req, res, next) => {
-    const validationRule = {
-        question: 'required|string',
-        choices: 'required|array',
-        answer: 'required|string'
-    };
-    validator(req.body, validationRule, {}, (err, status) => {
-        if(!status){
-            res.status(412).send({
-                success: false,
-                message: 'Validation failed',
-                data: err
-            });
-        }else{
-            next();
-        }
+  const validationRule = Joi.object({
+    question: Joi.string().required(),
+    choices: Joi.array().items(Joi.string()).min(2).required(),
+    answer: Joi.string().required(),
+  });
+
+  const { error } = validationRule.validate(req.body);
+  if (error) {
+    return res.status(412).json({
+      success: false,
+      message: 'Validation failed',
+      data: error.details[0].message,
     });
+  }
+
+  next();
 };
 
 module.exports = {
-    saveQuiz
+  saveQuiz,
 };

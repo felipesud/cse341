@@ -1,17 +1,21 @@
 const express = require('express');
 const router = express.Router();
-
-const quizzesController = require('../controllers/quizzes');
+const csharpController = require('../controllers/csharpController');
+const typescriptController = require('../controllers/typescriptController');
 const validation = require('../middleware/validate');
 
+// Rotas para C# Quiz
+router.get('/csharp', csharpController.getAllCSharp);
+router.get('/csharp/:id', csharpController.getSingleCSharp);
+router.post('/csharp', validation.saveQuiz, csharpController.createQuestionCSharp);
+router.put('/csharp/:id', validation.saveQuiz, csharpController.updateQuestionCSharp);
+router.delete('/csharp/:id', csharpController.deleteQuestionCSharp);
 
-//C# Quiz Routes
-router.get('/', quizzesController.getAllCSharp);
-router.get('/:id', quizzesController.getSingleCSharp);
-router.post('/', validation.saveQuiz, quizzesController.createQuestionCSharp);
-router.put('/:id', validation.saveQuiz, quizzesController.updateQuestionCSharp);
-router.delete('/:id', quizzesController.deleteQuestionCSharp);
-
-//TypeScript Quiz Routes
+// Rotas para TypeScript Quiz
+router.get('/typescript', typescriptController.getAllTypeScript);
+router.get('/typescript/:id', typescriptController.getSingleTypeScript);
+router.post('/typescript', validation.saveQuiz, typescriptController.createQuestionTypeScript);
+router.put('/typescript/:id', validation.saveQuiz, typescriptController.updateQuestionTypeScript);
+router.delete('/typescript/:id', typescriptController.deleteQuestionTypeScript);
 
 module.exports = router;

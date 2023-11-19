@@ -1,31 +1,30 @@
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+
 dotenv.config();
-const MongoClient = require('mongodb').MongoClient;
 
-let _db;
+const uri = process.env.MONGODB_URI;
 
-const initDb = (callback) => {
-    if(_db){
-        console.log('DB is already initialized.');
-        return callback(null, _db);
-    }
-    MongoClient.connect(process.env.MONGODB_URI)
-    .then((client) => {
-        _db = client.db();
-        callback(null, _db);
-    })
-    .catch((err) => {
-        callback(err);
+const connectDB = async () => {
+  try {
+    const connection = await mongoose.connect(uri);
+    console.log('Connected to MongoDB');
+
+    // Verifica se a conexão é estabelecida corretamente
+    console.log('Mongoose default connection status:', connection.connections[0].readyState);
+
+    // Após a conexão ser estabelecida com sucesso, exiba os dados da coleção 'csharp'
+    const csharpCollection = mongoose.connection.collection('csharp');
+    csharpCollection.find({}).toArray((err, data) => {
+      if (err) {
+        console.error('Error retrieving data from "csharp" collection:', err);
+      } else {
+        console.log('Data from "csharp" collection:', data);
+      }
     });
+  } catch (error) {
+    console.error('Connection to MongoDB failed:', error.message);
+  }
 };
 
-const getDb = () => {
-    if(!_db){
-        throw Error('DB not initialized.');
-    }
-    return _db;
-};
-module.exports = {
-    initDb,
-    getDb
-}
+module.exports = connectDB;

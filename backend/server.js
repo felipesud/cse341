@@ -1,45 +1,26 @@
 const express = require('express');
-const cors = require("cors");
-const bodyParser = require('body-parser');
+const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
-const mongodb = require('./db/connect');
-const port = process.env.PORT || 8080;
+const swaggerDocument = require('./swagger.json'); // Certifique-se de que seu arquivo swagger.json está neste diretório
+const connectDB = require('./db/connect');
+const quizzesRouter = require('./routes/quizzes');
+
 const app = express();
+const port = process.env.PORT || 8083;
 
-// Use CORS middleware before your routes
-app.use(cors({
-  origin: 'http://localhost:8080', // substitua por sua URL de origem
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
+app.use(express.json());
 
+// Configuração do Swagger
+app.use('/api-docs', swaggerUi.serve);
+app.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app
-  .use(bodyParser.json())
-  .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type,Accept, Z-key');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();
-  })
-  .use('/', require('./routes'));
+// Conectar ao MongoDB
+connectDB();
 
-process.on('uncaughtException', (err, origin) => {
-  console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
-});
+// Rotas
+app.use('/quizzes', quizzesRouter);
 
-app
-  .use(express.json())
-  .use(express.urlencoded({ extended: true }))
-  .use('/', require('./routes'));
-  
-mongodb.initDb((err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    app.listen(port);
-    console.log(`Connected to DB and listening on ${port}`);
-  }
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
