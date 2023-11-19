@@ -24,20 +24,17 @@ const getSingleTypeScript = async (req, res) => {
 };
 
 const createQuestionTypeScript = async (req, res) => {
-  // Esquema de validação com Joi
   const schema = Joi.object({
     question: Joi.string().required(),
     choices: Joi.array().items(Joi.string()).min(2).required(),
     answer: Joi.string().required(),
   });
 
-  // Validando os dados recebidos
   const { error } = schema.validate(req.body);
   if (error) {
     return res.status(400).json({ message: error.details[0].message });
   }
 
-  // Criando a nova pergunta
   const question = new TypeScript({
     question: req.body.question,
     choices: req.body.choices,
@@ -56,14 +53,12 @@ const updateQuestionTypeScript = async (req, res) => {
   const { id } = req.params;
   const { question, choices, answer } = req.body;
 
-  // Esquema de validação com Joi para atualização
   const schema = Joi.object({
     question: Joi.string().required(),
     choices: Joi.array().items(Joi.string()).min(2).required(),
     answer: Joi.string().required(),
   });
 
-  // Validando os dados recebidos
   const { error } = schema.validate(req.body);
   if (error) {
     return res.status(400).json({ message: error.details[0].message });

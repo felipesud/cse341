@@ -10,10 +10,8 @@ const connectDB = async () => {
     const connection = await mongoose.connect(uri);
     console.log('Connected to MongoDB');
 
-    // Verifica se a conexão é estabelecida corretamente
     console.log('Mongoose default connection status:', connection.connections[0].readyState);
 
-    // Após a conexão ser estabelecida com sucesso, exiba os dados da coleção 'csharp'
     const csharpCollection = mongoose.connection.collection('csharp');
     csharpCollection.find({}).toArray((err, data) => {
       if (err) {

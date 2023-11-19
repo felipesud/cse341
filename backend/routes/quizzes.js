@@ -4,14 +4,14 @@ const csharpController = require('../controllers/csharpController');
 const typescriptController = require('../controllers/typescriptController');
 const validation = require('../middleware/validate');
 
-// Rotas para C# Quiz
+
 router.get('/csharp', csharpController.getAllCSharp);
 router.get('/csharp/:id', csharpController.getSingleCSharp);
 router.post('/csharp', validation.saveQuiz, csharpController.createQuestionCSharp);
 router.put('/csharp/:id', validation.saveQuiz, csharpController.updateQuestionCSharp);
 router.delete('/csharp/:id', csharpController.deleteQuestionCSharp);
 
-// Rotas para TypeScript Quiz
+
 router.get('/typescript', typescriptController.getAllTypeScript);
 router.get('/typescript/:id', typescriptController.getSingleTypeScript);
 router.post('/typescript', validation.saveQuiz, typescriptController.createQuestionTypeScript);
